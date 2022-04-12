@@ -1,0 +1,58 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    width: 375px;
+    height: 667px;
+    background-color: #f3f3f3;
+}
+
+.topo,.barra {
+    width: 375px;
+    height: 80px;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    background-color: #ffffff;
+    box-shadow: 0 0 1em #e9e9e9;
+}
+
+.topo {
+    top: 0;
+    padding: 10px;
+    margin-right: 50px;
+}
+
+img {
+    width: fit-content;
+    margin-left: 15px;
+    margin-top: 10px;
+    margin-bottom: 11px;
+}
+
+.topo > ion-icon {
+    font-size: 50px;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.barra {
+    bottom: 0;
+}
+
+.barra > input {
+    margin: 17px;
+    border: none;
+    font-size: 18px;
+    font-weight: 500;
+    font-style: italic;
+
+}
+
+.barra > ion-icon {
+    font-size: 35px;
+    margin: 20px 15px 5px 5px;
+}
+
+
