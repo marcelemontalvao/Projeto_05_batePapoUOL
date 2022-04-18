@@ -36,6 +36,10 @@ body {
 }
 
 .messages {
+    height: 100%;
+}
+
+.messages {
     margin-top: 20px;
     font-size: 14px;
     overflow-y: scroll;
@@ -44,6 +48,9 @@ body {
 .messages>li {
     padding: 11px;
     margin-bottom: 4px;
+    word-wrap: break-word;
+    /* text-overflow: ellipsis;  
+    overflow: hidden;*/
 }
 
 .messages>li>span.timestamp {
@@ -90,6 +97,3 @@ body {
     cursor: pointer;
 }
 
-.messages {
-    height: 100%;
-}

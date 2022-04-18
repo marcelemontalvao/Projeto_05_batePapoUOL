@@ -13,17 +13,27 @@ function getMessages() {
     })
 }
 
-getMessages();
-
 function renderMessages() {
     const ulMessages = document.querySelector(".messages");
+    ulMessages.innerHTML = "";
     for (let i = 0; i < messages.length; i++) {
-        ulMessages.innerHTML += `
-        <li class="${messages[i].type}">
-            <span class="timestamp">(${messages[i].time})</span>
-            <span class="user">${messages[i].from}</span> para <span class="user">${messages[i].to}</span>: ${messages[i].text}
-        </li>
-        `
+        if (messages[i].type == "private_message") {
+            if (userName == messages[i].from || userName == messages[i].to) {
+                ulMessages.innerHTML += `
+                <li class="${messages[i].type}">
+                <span class="timestamp">(${messages[i].time})</span>
+                <span class="user">${messages[i].from}</span> para <span class="user">${messages[i].to}</span>: ${messages[i].text}
+                </li>
+                `
+            }
+        } else {
+            ulMessages.innerHTML += `
+                <li class="${messages[i].type}">
+                <span class="timestamp">(${messages[i].time})</span>
+                <span class="user">${messages[i].from}</span> para <span class="user">${messages[i].to}</span>: ${messages[i].text}
+                </li>
+                `
+        }
     }
 }
 
@@ -43,16 +53,15 @@ function registerUser () {
     promise.then(function(value) {
         {status: 200}
        getMessages()
-       keepOn()
+       setInterval(keepOn, TIME5s)
     }).catch(function(value) {
         {status: 400}
+        prompt("Digite outro nome. Este já está em uso.")
     })
 }
 
 function keepOn () {
-setInterval(function () {
 let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: userName})
-}, TIME5s)
 promise.then(function(response){
     console.log("Continua presente")
 }).catch(function(value){
@@ -70,7 +79,7 @@ function sendMessages () {
     })
 
     promise.then(function(response){
-    axios.get('https://mock-api.driven.com.br/api/v6/uol/messages') 
+    getMessages()
     }).catch(function(value){
     window.location.reload()
     })
