@@ -1,5 +1,7 @@
 let messages = []
 
+registerUser()
+
 function getMessages() {
     axios.get('https://mock-api.driven.com.br/api/v6/uol/messages').then(function (response) {
         messages = response.data;
@@ -33,3 +35,7 @@ function newMessages () {
     newMessages.scrollIntoView();
 }
 
+function registerUser () {
+    prompt("Qual o seu nome?")
+
+}
