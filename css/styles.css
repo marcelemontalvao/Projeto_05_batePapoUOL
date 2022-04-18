@@ -84,9 +84,10 @@ body {
     outline: none;
 }
 
-.footer>ion-icon {
+.footer>span>ion-icon {
     font-size: 35px;
     margin-right: 15px;
+    cursor: pointer;
 }
 
 .messages {
