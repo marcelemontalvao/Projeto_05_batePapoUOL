@@ -4,6 +4,7 @@ function getMessages() {
     axios.get('https://mock-api.driven.com.br/api/v6/uol/messages').then(function (response) {
         messages = response.data;
         renderMessages()
+        newMessages()
     })
 }
 
@@ -22,6 +23,13 @@ function renderMessages() {
 }
 
 function updateServer() {
-    setInterval(getMessages.scrollIntoView(), 3000)
+    setInterval(getMessages, 3000)
+}
+
+updateServer();
+
+function newMessages () {
+    const newMessages = document.querySelector(".messages li:last-child")
+    newMessages.scrollIntoView();
 }
 
