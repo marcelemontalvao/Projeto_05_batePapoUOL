@@ -9,9 +9,8 @@ function getMessages() {
 
 getMessages();
 
-const ulMessages = document.querySelector(".messages");
-
 function renderMessages() {
+    const ulMessages = document.querySelector(".messages");
     for (let i = 0; i < messages.length; i++) {
         ulMessages.innerHTML += `
         <li class="${messages[i].type}">
@@ -21,3 +20,8 @@ function renderMessages() {
         `
     }
 }
+
+function updateServer() {
+    setInterval(getMessages.scrollIntoView(), 3000)
+}
+
