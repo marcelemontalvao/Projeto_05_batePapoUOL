@@ -1,5 +1,6 @@
 let messages = []
 let userName = prompt("Qual o seu nome?")
+let TIME5s = 5*1000;
 
 registerUser()
 
@@ -39,10 +40,22 @@ function newMessages () {
 function registerUser () {
     let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", {name: userName})
     promise.then(function(value) {
-       return {status: 200}
+        {status: 200}
        getMessages()
+       keepOn()
     }).catch(function(value) {
-        return {status: 400}
+        {status: 400}
         prompt("Nome já existente. Digite outro nome.")
     })
+}
+
+function keepOn () {
+setInterval(function () {
+let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: userName})
+}, TIME5s)
+promise.then(function(response){
+    console.log("Continua presente")
+}).catch(function(value){
+      console.log("Saiu da sala")
+})
 }
