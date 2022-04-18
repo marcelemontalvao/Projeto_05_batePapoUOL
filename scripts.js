@@ -1,4 +1,5 @@
 let messages = []
+let userName = prompt("Qual o seu nome?")
 
 registerUser()
 
@@ -36,6 +37,12 @@ function newMessages () {
 }
 
 function registerUser () {
-    prompt("Qual o seu nome?")
-
+    let promise = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", {name: userName})
+    promise.then(function(value) {
+       return {status: 200}
+       getMessages()
+    }).catch(function(value) {
+        return {status: 400}
+        prompt("Nome já existente. Digite outro nome.")
+    })
 }
